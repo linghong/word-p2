@@ -2,11 +2,171 @@
 <html>
 	<head>
 		<title>SAT Vocabulary helper</title>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/						
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<!-- Common CSS/JSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    	<script src="js/respond.min.js"></script>										
 	</head>
 
 	<body>
-		This is the index page.
-	</body>
+		<div class="container">	
+			<!--row1: Site Name-->
+			<header class="row " >
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+					<img class="img-responsive" src="images/edugym-logo.png" alt="logo">
+				</div>
+				<div class="col-lg-9 col-md-9 col-sm-9  headerslide">
+					<div id="locations" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="images/header7.jpg" alt="header">
+							</div>
+							<div class="item">
+								<img src="images/header2.jpg" alt="header">
+							</div>
+							<div class="item">
+								<img src="images/header6.jpg" alt="header">
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>	
 
+			<!--row2: navigation -->
+			<div class="row">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+			            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+			                <span class="sr-only">Toggle navigation</span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			            </button>
+		            </div>
+		            <div class="collapse navbar-collapse" id="collapse">
+						<ul class="nav navbar-nav">
+							<li><a href='index.html'>Home</a></li>
+							<li><a href='contact.html'>Contact Us</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+
+			<!--row3 -->
+			<article class="row">
+				<h1>Vocabulary Lessons</h1>		
+				<div id="practicetitle">
+					<P>The vocabulary of the practice library is equally divided into several sections. You can study any section at any time. To view all the vocabulary in that section, click the blue link of that section. A window that lists all the vocabulary belonging to that section will pop up. </p>
+				</div>
+			</article>
+			<section class="row">
+				<div class="panel panel-royalty col-offset-lg-1 col-lg-5 col-md-6"> 
+					<a href="#vocabularycard1" data-toggle="modal" class="vocabulary_section title">Section One</a>
+					<p>Words beginning with the letter "A" -"C"</p>
+				</div>
+				<div class="panel panel-royalty col-lg-5 col-md-6"> 
+					<a href="#vocabularycard2" data-toggle="modal" class="vocabulary_section title">Section Two</a>
+					<p>Words beginning with the letter "C"-"E"</p>
+				</div>
+				<div class="panel panel-royalty col-offset-lg-1 col-lg-5 col-md-6"> 
+					<a href="#vocabularycard3" data-toggle="modal" class="vocabulary_section title">Section Three</a>
+					<p>Words beginning with the letter "E" -"H"</p>
+				</div>
+				<div class="panel panel-royalty col-lg-5 col-md-6"> 
+					<a href="#vocabularycard4" data-toggle="modal" class="vocabulary_section title">Section Four</a>
+					<p>Words beginning with the letter "H" -"K"</p>
+				</div>	
+
+				<div class="panel col-lg-offset-3 col-lg-5 col-md-offset-3 col-md-5"> 
+					<a href="login.html" class="btn btn-royalty btn-xl">More Sections</a>
+				</div>				
+			</section>
+			<footer>
+				| <a href="home.html">Home</a>|<a href="howdoesitwork.html">About</a>|<a href='contact.html'>Contact Us</a>|
+			</footer>
+		</div><!-- end of container -->
+
+		 <!-- modal windows -->
+		<div id="vocabularycard1" class="modal fade" tabindex="-1">
+			<div class="modal-dialogue ">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+						<h2 class="modal-title">Section One Vocabulary</h2>
+						<button class="btn btn-royalty">Hide Explanation</button>			
+					</div>
+					<div class="modal-body">
+						<div class="vocabulary"></div>
+					</div>
+					<div class="modal-footer">
+						<button data-dismiss="modal" class="close btn btn-royalty">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="vocabularycard2" class="modal fade" tabindex="-1">
+			<div class="modal-dialogue ">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+						<h2 class="modal-title">Section Two Vocabulary</h2>
+						<button class="btn btn-royalty">Hide Explanation</button>			
+					</div>
+					<div class="modal-body">
+						<div class="vocabulary"></div>
+					</div>
+					<div class="modal-footer">
+						<button data-dismiss="modal" class="close btn btn-royalty">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="vocabularycard3" class="modal fade" tabindex="-1">
+			<div class="modal-dialogue ">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+						<h2 class="modal-title">Section Three Vocabulary</h2>
+						<button class="btn btn-royalty">Hide Explanation</button>			
+					</div>
+					<div class="modal-body">
+						<div class="vocabulary"></div>
+					</div>
+					<div class="modal-footer">
+						<button data-dismiss="modal" class="close btn btn-royalty">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="vocabularycard4" class="modal fade" tabindex="-1">
+			<div class="modal-dialogue ">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+						<h2 class="modal-title">Section Four Vocabulary</h2>
+						<button class="btn btn-royalty">Hide Explanation</button>			
+					</div>
+					<div class="modal-body">
+						<div class="vocabulary"></div>
+					</div>
+					<div class="modal-footer">
+						<button data-dismiss="modal" class="close btn btn-royalty">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vocabularylibrary.js"></script>
+		<script src="js/getSuffix.js"></script>
+		<script src="js/vocabulary_card.js"></script>
+		<script>	
+		    $('.carousel').carousel({
+        		interval:2000
+    		})	
+		</script>
+	</body>
 </html>
