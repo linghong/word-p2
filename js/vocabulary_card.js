@@ -47,61 +47,79 @@ For Vocabulary Card
       //show all the vocabulary in the clicked section on the screen
       for(i=0;i<wordnumber_persection;i++){
         var word_number = section_number+i;
-
-        //Get the word sentence example link from google translate
+        //word example link from google translate
         exampleLink[word_number] =example_front.concat(wordlibrary[word_number].word);
         
-        //get the string of all the vocabulary need to be shown on the screen 
-        withexplanation +="<div class='word vocabulary_card'>"+
+        //When explanation is shown 
+        withexplanation +="<div class='each_word'>"+
         "<div class='col-lg-1 col-md-2 col-sm-2 col-xs-12'><strong>"+wordlibrary[word_number].word+"</strong></div>" +
         "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-3'>"+wordlibrary[word_number].category+"</div>"+
         "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-3'>"+"<a target='_blank' href='"+exampleLink[word_number]+"'><span class='glyphicon glyphicon-folder-open'></span></a></div>"+
         "<div class='col-lg-8 col-md-7 col-sm-12 col-xs-12'>"+wordlibrary[word_number].explanation+"</div>"+
         "</div>"; 
 
-        //when explanation is hided, get the string of all the vocabulary need to be shown on the screen 
-        withoutexplanation +="<div class='vocabulary_card'>"+
+        //when explanation is hided
+        withoutexplanation +="<div class='each_word'>"+
         "<div id='word"+word_number+"' class='word col-lg-1 col-md-2 col-sm-2 col-xs-12'><strong>"+wordlibrary[word_number].word+"</strong></div>" +
         "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-3'>"+wordlibrary[word_number].category+"</div>"+
         "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-3'>"+"<a target='_blank' href='"+exampleLink[word_number]+"'><span class='glyphicon glyphicon-folder-open'></span></a></div>"+
         "<div id='explanation"+word_number+"' class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-info-sign'></span></div>"+
         "</div>"; 
+
       }//end for loop
+    
       return withexplanation, withoutexplanation;
     }
-      
+     
+     //get the vocabulary string for SATvocabulary, 25 words per section 
       vocabularycard(satVocabulary,25);    
 
       //display the string on the screen
       $('.vocabulary').html(
           '<div class="btn btn-royalty explanation-hide">Hide Explanation</div>'+
           '<div class="btn btn-royalty explanation-show">Show Explanation</div>'+
-        '<div class="explanation">'+
+        '<div class="word-group">'+
           withexplanation+
-        '</div>'   
+        '</div>'  
       ); 
-      $('.explanation-show').hide(10);
+      $('.explanation-show').hide(10);//hide show explanation button
+      $('.modal .each_word:odd').css({
+       "color": "purple"
+      });//filter
 
+      //click hide explanation button
       $('.explanation-hide').click(function(){ 
-        $('.explanation').html(
+        $('.word-group').html(
           "<h3>move your mouse on the word, you'll see the explanation for that word</h3>"
          + withoutexplanation);
         $('.explanation-show').show(100);      
         $('.explanation-hide').hide(100);
 
+        //mouse hover function
         $('.word').hover(function(){
             var count =$(this).attr("id").slice(4);
            $('#explanation' +count).html("<div class='col-lg-8 col-md-7 col-sm-12 col-xs-12'>"+
             satVocabulary[count].explanation+"</div>");
+           $('#explanation' +count).css({
+            "color":"blue"
+           });
           },function(){
             var count =$(this).attr("id").slice(4);
             $('#explanation'+count).html("<div id='explanation"+count+"'class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-info-sign'></span></div>");
+            $('#explanation' +count).css({
+            "color":"black"
+           });
         });
       });
+
+      //click show explanation button
       $('.explanation-show').click(function(){
-        $('.explanation').html(withexplanation);
+        $('.word-group').html(withexplanation);
         $('.explanation-hide').show(100); 
         $('.explanation-show').hide(100); 
+        $('.modal .each_word:odd').css({
+         "color": "purple",
+        });//filter
       });
 
     });//end getJSON
