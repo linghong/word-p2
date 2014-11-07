@@ -64,7 +64,7 @@ For Vocabulary Card
         "<div id='word"+word_number+"' class='word col-lg-1 col-md-2 col-sm-2 col-xs-12'><strong>"+wordlibrary[word_number].word+"</strong></div>" +
         "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-3'>"+wordlibrary[word_number].category+"</div>"+
         "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-3'>"+"<a target='_blank' href='"+exampleLink[word_number]+"'><span class='glyphicon glyphicon-folder-open'></span></a></div>"+
-        "<div id='explanation"+word_number+"' class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-map-marker'></span></div>"+
+        "<div id='explanation"+word_number+"' class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-info-sign'></span></div>"+
         "</div>"; 
       }//end for loop
       return withexplanation, withoutexplanation;
@@ -74,14 +74,13 @@ For Vocabulary Card
 
       //display the string on the screen
       $('.vocabulary').html(
-        '<div class="btn-group">'+
           '<div class="btn btn-royalty explanation-hide">Hide Explanation</div>'+
           '<div class="btn btn-royalty explanation-show">Show Explanation</div>'+
-        '</div>'+ 
         '<div class="explanation">'+
           withexplanation+
-        '</div>'
+        '</div>'   
       ); 
+      $('.explanation-show').hide(10);
 
       $('.explanation-hide').click(function(){ 
         $('.explanation').html(
@@ -96,7 +95,7 @@ For Vocabulary Card
             satVocabulary[count].explanation+"</div>");
           },function(){
             var count =$(this).attr("id").slice(4);
-            $('#explanation'+count).html("<div id='explanation"+count+"' class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-map-marker'></span></div>");
+            $('#explanation'+count).html("<div id='explanation"+count+"'class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-info-sign'></span></div>");
         });
       });
       $('.explanation-show').click(function(){
@@ -107,3 +106,4 @@ For Vocabulary Card
 
     });//end getJSON
 }); //end vocabulary_section
+
