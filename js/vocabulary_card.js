@@ -1,8 +1,9 @@
 /*
 For Vocabulary Card
-*/
+*/ 
+
   $('.vocabulary_section').click(function(){
-    
+
       //A few of variables and arrays 
       var value = $(this).text();
       var section_number;
@@ -34,32 +35,75 @@ For Vocabulary Card
     else{
       section_number = 175;
     }
- 
-    $.getJSON('/data/SATVocabulary.json', function(satVocabulary){
- 
-      var vocabularycard="";
 
+    $.getJSON('/data/SATVocabulary.json', function(satVocabulary){
+
+      function vocabularycard (wordlibrary,wordnumber_persection){
+      withexplanation="";
+      withoutexplanation="";
       var exampleLink = [];      
       var example_front = "https://translate.google.com/#auto/en/"; //for word example link
     
       //show all the vocabulary in the clicked section on the screen
-      for(i=0;i<25;i++){
+      for(i=0;i<wordnumber_persection;i++){
         var word_number = section_number+i;
 
         //Get the word sentence example link from google translate
-        exampleLink[word_number] =example_front.concat(satVocabulary[word_number].word);
+        exampleLink[word_number] =example_front.concat(wordlibrary[word_number].word);
         
         //get the string of all the vocabulary need to be shown on the screen 
-        vocabularycard=vocabularycard + "<div class='vocabulary_card'>"+
-        "<div class='col-lg-1 col-md-2 col-sm-2 col-xs-12'><strong>"+satVocabulary[word_number].word+"</strong></div>" +
-        "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-3'>"+satVocabulary[word_number].category+"</div>"+
+        withexplanation +="<div class='word vocabulary_card'>"+
+        "<div class='col-lg-1 col-md-2 col-sm-2 col-xs-12'><strong>"+wordlibrary[word_number].word+"</strong></div>" +
+        "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-3'>"+wordlibrary[word_number].category+"</div>"+
         "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-3'>"+"<a target='_blank' href='"+exampleLink[word_number]+"'><span class='glyphicon glyphicon-folder-open'></span></a></div>"+
-        "<div class='col-lg-8 col-md-7 col-sm-12 col-xs-12'>"+satVocabulary[word_number].explanation+"</div>"+
+        "<div class='col-lg-8 col-md-7 col-sm-12 col-xs-12'>"+wordlibrary[word_number].explanation+"</div>"+
+        "</div>"; 
+
+        //when explanation is hided, get the string of all the vocabulary need to be shown on the screen 
+        withoutexplanation +="<div class='vocabulary_card'>"+
+        "<div id='word"+word_number+"' class='word col-lg-1 col-md-2 col-sm-2 col-xs-12'><strong>"+wordlibrary[word_number].word+"</strong></div>" +
+        "<div class='col-lg-1 col-md-1 col-sm-1 col-xs-3'>"+wordlibrary[word_number].category+"</div>"+
+        "<div class='col-lg-2 col-md-2 col-sm-2 col-xs-3'>"+"<a target='_blank' href='"+exampleLink[word_number]+"'><span class='glyphicon glyphicon-folder-open'></span></a></div>"+
+        "<div id='explanation"+word_number+"' class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-map-marker'></span></div>"+
         "</div>"; 
       }//end for loop
+      return withexplanation, withoutexplanation;
+    }
+      
+      vocabularycard(satVocabulary,25);    
 
       //display the string on the screen
-      $('.vocabulary').html(vocabularycard); 
+      $('.vocabulary').html(
+        '<div class="btn-group">'+
+          '<div class="btn btn-royalty explanation-hide">Hide Explanation</div>'+
+          '<div class="btn btn-royalty explanation-show">Show Explanation</div>'+
+        '</div>'+ 
+        '<div class="explanation">'+
+          withexplanation+
+        '</div>'
+      ); 
+
+      $('.explanation-hide').click(function(){ 
+        $('.explanation').html(
+          "<h3>move your mouse on the word, you'll see the explanation for that word</h3>"
+         + withoutexplanation);
+        $('.explanation-show').show(100);      
+        $('.explanation-hide').hide(100);
+
+        $('.word').hover(function(){
+            var count =$(this).attr("id").slice(4);
+           $('#explanation' +count).html("<div class='col-lg-8 col-md-7 col-sm-12 col-xs-12'>"+
+            satVocabulary[count].explanation+"</div>");
+          },function(){
+            var count =$(this).attr("id").slice(4);
+            $('#explanation'+count).html("<div id='explanation"+count+"' class='col-lg-8 col-md-7 col-sm-12 col-xs-12'><span class='glyphicon glyphicon-map-marker'></span></div>");
+        });
+      });
+      $('.explanation-show').click(function(){
+        $('.explanation').html(withexplanation);
+        $('.explanation-hide').show(100); 
+        $('.explanation-show').hide(100); 
+      });
 
     });//end getJSON
 }); //end vocabulary_section
