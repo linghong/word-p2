@@ -26,3 +26,6 @@ if($('input[name=competition]:checked').val()=="yes"){
 });//end change
 
 });//end Document ready
+
+
+
