@@ -94,7 +94,7 @@ $('.vocabulary_section').click(function(){
         $('.explanation-show').show(100);      
         $('.explanation-hide').hide(100);
 
-        //mouse hover function
+        //mouse hover function @@hover effect
         $('.word').hover(function(){
             var count =$(this).attr("id").slice(4);
            $('#explanation' +count).html("<div class='col-lg-8 col-md-7 col-sm-12 col-xs-12'>"+
