@@ -36,8 +36,6 @@ $('.vocabulary_section').click(function(){
     }
 
     //get vocabulary string   @@additional effect
-    $.getJSON('/data/SATVocabulary.json', function(satVocabulary){
-
       function vocabularycard (wordlibrary,wordnumber_persection){
       withexplanation="";
       withoutexplanation="";
@@ -70,7 +68,7 @@ $('.vocabulary_section').click(function(){
     
       return withexplanation, withoutexplanation;
     }
-     
+      console.log(satVocabulary[2]);
      //get the vocabulary string for SATvocabulary, 25 words per section 
       vocabularycard(satVocabulary,25);    
 
@@ -124,7 +122,6 @@ $('.vocabulary_section').click(function(){
         });//filter
       });//end click explanation-show 
 
-    });//end getJSON
 }); //end vocabulary_section
 
 //animation for two hedgehog boys @@additional effect
