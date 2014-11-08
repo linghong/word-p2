@@ -1,8 +1,7 @@
 /*
 For Vocabulary Card
 */ 
-
-  $('.vocabulary_section').click(function(){
+$('.vocabulary_section').click(function(){
 
       //A few of variables and arrays 
       var value = $(this).text();
@@ -83,11 +82,12 @@ For Vocabulary Card
         '</div>'  
       ); 
       $('.explanation-show').hide(10);//hide show explanation button
+      //@@filtering effect
       $('.modal .each_word:odd').css({
        "color": "purple"
       });//filter
 
-      //click hide explanation button
+      //click hide explanation button @@click effect
       $('.explanation-hide').click(function(){ 
         $('.word-group').html(
           "<h3>move your mouse on the word, you'll see the explanation for that word</h3>"
@@ -112,11 +112,12 @@ For Vocabulary Card
         });
       });
 
-      //click show explanation button
+      //click show explanation button @@click effect
       $('.explanation-show').click(function(){
         $('.word-group').html(withexplanation);
         $('.explanation-hide').show(100); 
         $('.explanation-show').hide(100); 
+        //@@filtering effect
         $('.modal .each_word:odd').css({
          "color": "purple",
         });//filter
@@ -124,4 +125,15 @@ For Vocabulary Card
 
     });//end getJSON
 }); //end vocabulary_section
+
+$('#hedgehog').hover(function(){
+  console.log("clicked");
+ $('#hedgehog1').hide(500);
+ $('#hedgehog2').hide(1000);
+}, function(){
+ $('#hedgehog1').show(500);
+ $('#hedgehog2').show(1000);
+}
+);//end hedhog img hover
+
 

@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+/*form validation  
+@@jQuery-driven interactive elements 
+@@if else
+*/
 $('button').click(function(submit){
   if($('#name').val().length ==0){
     $('.name-group .help-block').text("Name field can not be empty!");
@@ -14,7 +18,10 @@ $('button').click(function(submit){
   }//end else
 });//end click
 
-//add specific text when paticular radio button is checked
+/*add specific text when paticular radio button is checked
+@@jQuery-driven interactive elements 
+@@if else
+*/
 $('#competition').change(function(){
 if($('input[name=competition]:checked').val()=="yes"){
       console.log($('input[name=competition]:checked').val());
