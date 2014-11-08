@@ -35,6 +35,7 @@ $('.vocabulary_section').click(function(){
       section_number = 175;
     }
 
+    //get vocabulary string   @@additional effect
     $.getJSON('/data/SATVocabulary.json', function(satVocabulary){
 
       function vocabularycard (wordlibrary,wordnumber_persection){
@@ -75,8 +76,8 @@ $('.vocabulary_section').click(function(){
 
       //display the string on the screen
       $('.vocabulary').html(
-          '<div class="btn btn-royalty explanation-hide">Hide Explanation</div>'+
-          '<div class="btn btn-royalty explanation-show">Show Explanation</div>'+
+        '<div class="btn btn-royalty explanation-hide">Hide Explanation</div>'+
+        '<div class="btn btn-royalty explanation-show">Show Explanation</div>'+
         '<div class="word-group">'+
           withexplanation+
         '</div>'  
@@ -109,8 +110,8 @@ $('.vocabulary_section').click(function(){
             $('#explanation' +count).css({
             "color":"black"
            });
-        });
-      });
+        });//end hover
+      });//end click explanation-hid 
 
       //click show explanation button @@click effect
       $('.explanation-show').click(function(){
@@ -121,19 +122,19 @@ $('.vocabulary_section').click(function(){
         $('.modal .each_word:odd').css({
          "color": "purple",
         });//filter
-      });
+      });//end click explanation-show 
 
     });//end getJSON
 }); //end vocabulary_section
 
+//animation for two hedgehog boys @@additional effect
 $('#hedgehog').hover(function(){
-  console.log("clicked");
- $('#hedgehog1').hide(500);
- $('#hedgehog2').hide(1000);
-}, function(){
- $('#hedgehog1').show(500);
- $('#hedgehog2').show(1000);
-}
+    $('#hedgehog1').hide(500);
+    $('#hedgehog2').hide(1000);
+  }, function(){
+    $('#hedgehog1').show(500);
+    $('#hedgehog2').show(1000);
+  }
 );//end hedhog img hover
 
 
